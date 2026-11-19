@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Asiyath Sajna | DevOps Portfolio</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+
+/* RESET */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background: #090909;
+    color: #ffffff;
+    line-height: 1.7;
+    overflow-x: hidden;
+}
+
+/* THEME COLORS */
+
+:root {
+    --gold: #d4af37;
+    --gold-light: #ffe58a;
+    --gold-dark: #a67c00;
+    --background: #090909;
+    --glass: rgba(255, 255, 255, 0.05);
+    --border: rgba(212, 175, 55, 0.3);
+    --text: #c7c7c7;
+}
+
+/* BACKGROUND EFFECTS */
+
+body::before {
+    content: "";
+    position: fixed;
+    width: 400px;
+    height: 400px;
+    background: rgba(212, 175, 55, 0.12);
+    filter: blur(120px);
+    top: -100px;
+    left: -100px;
+    z-index: -1;
+}
+
+body::after {
+    content: "";
+    position: fixed;
+    width: 350px;
+    height: 350px;
+    background: rgba(166, 124, 0, 0.12);
+    filter: blur(120px);
+    bottom: -100px;
+    right: -100px;
+    z-index: -1;
+}
+
+/* HEADER */
+
+header {
+    min-height: 95vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 60px 20px;
+    background:
+        linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.85)),
+        radial-gradient(circle at center, #382b08, #090909 65%);
+}
+
+.hero {
+    max-width: 850px;
+    animation: fadeUp 1.2s ease;
+}
+
+.hero-tag {
+    display: inline-block;
+    color: var(--gold-light);
+    border: 1px solid var(--gold);
+    background: rgba(212,175,55,0.08);
+    padding: 9px 22px;
+    border-radius: 30px;
+    font-size: 13px;
+    letter-spacing: 2px;
+    margin-bottom: 25px;
+}
+
+header h1 {
+    font-size: clamp(2.5rem, 6vw, 4.5rem);
+    font-weight: 800;
+    margin-bottom: 15px;
+}
+
+header h1 span {
+    color: var(--gold);
+    text-shadow: 0 0 25px rgba(212,175,55,0.4);
+}
+
+header p {
+    color: #d0d0d0;
+    font-size: 17px;
+    margin-bottom: 35px;
+}
+
+/* BUTTON */
+
+.hero-btn {
+    display: inline-block;
+    text-decoration: none;
+    color: #111;
+    background: linear-gradient(135deg, #ffe58a, #d4af37, #a67c00);
+    padding: 13px 32px;
+    border-radius: 30px;
+    font-weight: 700;
+    transition: 0.4s;
+    box-shadow: 0 0 25px rgba(212,175,55,0.25);
+}
+
+.hero-btn:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 0 35px rgba(212,175,55,0.55);
+}
+
+/* NAVIGATION */
+
+nav {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 35px;
+    padding: 18px 15px;
+    background: rgba(15,15,15,0.8);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border-bottom: 1px solid var(--border);
+}
+
+nav a {
+    color: #e5e5e5;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 500;
+    transition: 0.3s;
+}
+
+nav a:hover {
+    color: var(--gold);
+}
+
+/* COMMON SECTION */
+
+section {
+    max-width: 1100px;
+    margin: auto;
+    padding: 90px 25px;
+}
+
+.section-title {
+    text-align: center;
+    margin-bottom: 45px;
+}
+
+.section-title h2 {
+    font-size: 2.3rem;
+    margin-bottom: 10px;
+}
+
+.section-title h2 span {
+    color: var(--gold);
+}
+
+.section-title p {
+    color: #999;
+    font-size: 14px;
+}
+
+/* GLASS CARD BASE */
+
+.glass {
+    background: var(--glass);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.4);
+    transition: 0.4s;
+}
+
+.glass:hover {
+    border-color: var(--gold);
+    box-shadow: 0 10px 35px rgba(212,175,55,0.15);
+    transform: translateY(-7px);
+}
+
+/* ABOUT */
+
+.about-content {
+    padding: 40px;
+    text-align: center;
+}
+
+.about-content p {
+    color: var(--text);
+    font-size: 16px;
+}
+
+/* SKILLS */
+
+.skills {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 22px;
+}
+
+.skill {
+    padding: 27px 15px;
+    text-align: center;
+    font-weight: 600;
+    color: var(--gold-light);
+    font-size: 16px;
+    letter-spacing: 0.5px;
+}
+
+/* PROJECTS */
+
+.projects {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 25px;
+}
+
+.project {
+    padding: 30px;
+}
+
+.project h3 {
+    color: var(--gold);
+    font-size: 19px;
+    margin-bottom: 15px;
+}
+
+.project p {
+    color: var(--text);
+    font-size: 14px;
+    line-height: 1.8;
+}
+
+.project a {
+    display: inline-block;
+    margin-top: 22px;
+    padding: 9px 23px;
+    color: #111;
+    background: linear-gradient(135deg, #ffe58a, #d4af37);
+    border-radius: 25px;
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 700;
+    transition: 0.3s;
+}
+
+.project a:hover {
+    background: #fff0ae;
+    transform: scale(1.05);
+}
+
+/* CONTACT */
+
+.contact-box {
+    padding: 40px;
+    text-align: center;
+}
+
+.contact-box p {
+    color: var(--text);
+    margin: 18px 0;
+    overflow-wrap: anywhere;
+}
+
+.contact-box a {
+    color: var(--gold-light);
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.contact-box a:hover {
+    color: white;
+    text-shadow: 0 0 12px var(--gold);
+}
+
+/* FOOTER */
+
+footer {
+    text-align: center;
+    padding: 25px 15px;
+    background: rgba(0,0,0,0.7);
+    border-top: 1px solid var(--border);
+    color: #999;
+    font-size: 13px;
+}
+
+/* ANIMATION */
+
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(35px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* RESPONSIVE DESIGN */
+
+@media (max-width: 600px) {
+
+    header {
+        min-height: 80vh;
+    }
+
+    header p {
+        font-size: 14px;
+    }
+
+    nav {
+        gap: 16px;
+        padding: 15px 10px;
+    }
+
+    nav a {
+        font-size: 12px;
+    }
+
+    section {
+        padding: 65px 18px;
+    }
+
+    .section-title h2 {
+        font-size: 1.8rem;
+    }
+
+    .about-content,
+    .contact-box {
+        padding: 25px 18px;
+    }
+
+    .project {
+        padding: 25px;
+    }
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- HEADER -->
+
+<header>
+    <div class="hero">
+
+        <div class="hero-tag">
+            DEVOPS ENGINEER PORTFOLIO
+        </div>
+
+        <h1>
+            Hello, I'm <span>Asiyath Sajna</span>
+        </h1>
+
+        <p>
+            Aspiring DevOps Engineer |
+            Linux | Docker | Kubernetes | AWS
+        </p>
+
+        <a href="#projects" class="hero-btn">
+            Explore My Projects
+        </a>
+
+    </div>
+</header>
+
+<!-- NAVIGATION -->
+
+<nav>
+    <a href="#about">About</a>
+    <a href="#skills">Skills</a>
+    <a href="#projects">Projects</a>
+    <a href="#contact">Contact</a>
+</nav>
+
+<!-- ABOUT -->
+
+<section id="about">
+
+    <div class="section-title">
+        <h2>About <span>Me</span></h2>
+        <p>A little introduction about myself</p>
+    </div>
+
+    <div class="glass about-content">
+
+        <p>
+            Hello! I'm an aspiring DevOps Engineer currently pursuing a
+            DevOps course from Zoople Technologies. I am passionate about
+            cloud computing, automation, CI/CD pipelines, containerization,
+            and infrastructure management.
+        </p>
+
+    </div>
+
+</section>
+
+<!-- SKILLS -->
+
+<section id="skills">
+
+    <div class="section-title">
+        <h2>Technical <span>Skills</span></h2>
+        <p>Tools and technologies I am learning</p>
+    </div>
+
+    <div class="skills">
+
+        <div class="glass skill">Linux</div>
+        <div class="glass skill">Git & GitHub</div>
+        <div class="glass skill">Docker</div>
+        <div class="glass skill">Kubernetes</div>
+        <div class="glass skill">Jenkins</div>
+        <div class="glass skill">AWS</div>
+        <div class="glass skill">Terraform</div>
+        <div class="glass skill">Shell Scripting</div>
+
+    </div>
+
+</section>
+
+<!-- PROJECTS -->
+
+<section id="projects">
+
+    <div class="section-title">
+        <h2>My <span>Projects</span></h2>
+        <p>Practical DevOps projects and experience</p>
+    </div>
+
+    <div class="projects">
+
+        <div class="glass project">
+
+            <h3>Dockerized Web Application</h3>
+
+            <p>
+                Containerized a web application using Docker and deployed
+                it efficiently across environments.
+            </p>
+
+            <a href="#">GitHub</a>
+
+        </div>
+
+        <div class="glass project">
+
+            <h3>CI/CD Pipeline</h3>
+
+            <p>
+                Built a CI/CD pipeline using Jenkins and GitHub to automate
+                testing and deployment.
+            </p>
+
+            <a href="#">GitHub</a>
+
+        </div>
+
+        <div class="glass project">
+
+            <h3>AWS Deployment</h3>
+
+            <p>
+                Deployed applications on AWS EC2 and configured networking,
+                security groups, and storage.
+            </p>
+
+            <a href="#">GitHub</a>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- CONTACT -->
+
+<section id="contact">
+
+    <div class="section-title">
+        <h2>Contact <span>Me</span></h2>
+        <p>Let's connect and collaborate</p>
+    </div>
+
+    <div class="glass contact-box">
+
+        <p>
+            Email:
+            <a href="mailto:sajnaasiyath@gmail.com">
+                sajnaasiyath@gmail.com
+            </a>
+        </p>
+
+        <p>
+            GitHub:
+            <a href="https://github.com/Sajnafakruddin"
+               target="_blank" rel="noopener noreferrer">
+                github.com/Sajnafakruddin
+            </a>
+        </p>
+
+        <p>
+            LinkedIn:
+            <a href="https://www.linkedin.com/in/asiyath-sajna-76a317192/"
+               target="_blank" rel="noopener noreferrer">
+                linkedin.com/in/AsiyathSajna
+            </a>
+        </p>
+
+    </div>
+
+</section>
+
+<!-- FOOTER -->
+
+<footer>
+    <p>© 2026 Asiyath Sajna | DevOps Portfolio</p>
+</footer>
+
+</body>
+</html>
